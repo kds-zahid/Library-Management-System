@@ -1,0 +1,571 @@
+<?php 
+    session_start();
+	if(isset($_SESSION['userName'])){
+		include_once '../class/admin.php';
+		$onjAdmin=new Admin();
+		if(isset($_GET['logout'])){
+			$onjAdmin->logout();
+		}	
+		if(isset($_POST['upload'])){
+		include_once "../class/book.php";
+		$book=new book();
+		$book->insertBookinfo($_POST);
+	}
+?>
+<html lang="en-US">
+<head>
+	<title>Dashboard</title>
+	<link rel="icon" href="../assets/frontend/img/favicon.ico" />
+	<link rel="stylesheet" href="../assets/frontend/maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script src="../assets/frontend/ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../assets/frontend/maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css"> 
+		.body{ 
+			background:white;
+			height:100%;
+			width:100%;
+		}
+		.menu{
+			background:black;
+			color:white;
+			font-weight:bold;
+			height:100%;
+			width:15%;
+			min-width:150px;
+		}
+		.menu a{
+			color:white;
+			text-decoration:none;
+		}
+		.menu a:hover{
+		}
+		.menu div.btn-info{
+			background:#3A3A3A;
+		}
+		.menu div.btn-info:hover{
+			background:#5BC0DE;
+			color:white;
+		}
+		.menu div.btn-info:active{
+			background:white;
+			color:black;
+		}
+		.board{
+			width:85%;
+			height:100%;
+			background:white;
+		}
+		#books .totalBooks{
+			padding:5px;
+			border-radius:5px;
+			border:1px solid black;
+		}
+		.anianimation{
+			animation:5s progress1 normal;
+		}
+		@keyframes progress1{
+			0%{width:0%;}
+			100%{width:70%;}
+		}
+		.anianimationM{
+			animation:5s progress1M normal;
+		}
+		@keyframes progress1M{
+			0%{width:100%;}
+			100%{width:30%;}
+		}
+	</style>
+</head>
+<body>
+	<div class="container row body"> 
+		<div class=" col-sm-1 text-center  menu">
+			<div class='btn-lg'></div>			
+			<img class="img-circle text-left" src="../<?php echo $_SESSION['userImage'];?>" style="" height="85px" width="85px"></img>
+			<h3>			
+				<!-- start: User Dropdown -->
+				<div class="dropdown">
+						<i class="halflings-icon white user"></i> 
+						<?php
+						echo $_SESSION['userName'];
+						?>
+					<a style='color:white;' class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="">profile</a></li>
+						<li><a href="<?php echo 'dashboard.php?logout=logout' ?>" type='submit' name='logout'><i class="halflings-icon off"></i> Logout</a></li>									
+					</ul>
+				</div>
+				<!-- end: User Dropdown -->
+			</h3>
+			<div class='btn-lg'></div>
+			<div class="btn-lg btn-info dropdown"> 
+                            <a data-toggle="dropdown" href="#">Book <span class="caret"></span> 
+                                <ul class="dropdown-menu"> 
+                                    <li><a data-toggle="tab" href="#addBook">Add book</a></li>	
+                                    <li><a  data-toggle="tab"  href="#manageBook">Manage book</a></li>	
+                                </ul>
+                            </a>
+			</div>
+			<div class='btn-lg'></div>
+			<div class="btn-lg btn-info dropdown"> 
+                            <a data-toggle="dropdown" href="#">Student <span class="caret"></span> 
+                                <ul class="dropdown-menu"> 
+                                    <li><a data-toggle="tab" href="#addStudent">Add student</a></li>	
+                                    <li><a data-toggle="tab"  href="#manageStudent">Manage student</a></li>	
+                                </ul>
+                            </a>
+			</div>
+			<div class='btn-lg'></div>
+			<div class="btn-lg btn-info dropdown"> 
+                            <a data-toggle="dropdown" href="#">user <span class="caret"></span> 
+                                <ul class="dropdown-menu"> 
+                                    <li class="disabled"><a data-toggle="tab" href="#addUser">Add user</a></li>	
+                                    <li><a data-toggle="tab"  href="#manageUser">Manage user</a></li>	
+                                </ul>
+                            </a>
+			</div>
+		</div>
+		<div class="col-md-10 board" style="overflow:scroll;">		
+			<div class="tab-content"> 
+				<div id='books' class="tab-pane fade in active container" style=""> 
+					<div class="row">
+						<h3 class="text-info text-center">Books</h3>
+					</div>
+					<div class="row"> 	
+						<div class="col-md-4 ">
+							<div class="thumbnail totalBooks "> 									
+								<div class="bg-info" > 
+									<p>Total books</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped text-right anianimation" style='width:70%;'>
+											<p class="text-right">70%</p>
+										</div>
+									</div>
+									<p>stored books</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active text-right" style='width:50%;'>
+											<p class="text-right">50%</p>
+										</div>
+									</div>
+									<p>needed books</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-danger active text-right" style='width:30%;'>
+											<p class="text-right">30%</p>
+										</div>
+									</div>
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 ">
+							<div class="thumbnail totalBooks "> 									
+								<div class="bg-info" > 
+									<p>Total student</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped text-right anianimation" style='width:70%;'>
+											<p class="text-right">70%</p>
+										</div>
+									</div>
+									<p>Total book's set</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active text-right" style='width:50%;'>
+											<p class="text-right">70%</p>
+										</div>
+									</div>
+									<p>needed book's set</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-danger active text-right" style='width:30%;'>
+											<p class="text-right">30%</p>
+										</div>
+									</div>
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 ">
+							<div class="thumbnail totalBooks "> 									
+								<div class="bg-info" > 
+									<p>book's info</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-success text-right anianimation" style='width:70%;'>
+											<p class="text-right">70%</p>
+										</div>
+										<div class="progress-bar progress-bar-striped progress-bar-danger text-right anianimationM" style='width:30%;'>
+											<p class="text-left">30%</p>
+										</div>
+									</div>
+									<p>Student's info</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-success active text-right" style='width:70%;'>
+											<p class="text-right">70%</p>
+										</div>
+										<div class="progress-bar progress-bar-striped progress-bar-danger active text-right" style='width:30%;'>
+											<p class="text-left">30%</p>
+										</div>
+									</div>
+									<p>needed book's info</p>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-danger active text-right" style='width:30%;'>
+											<p class="text-right">30%</p>
+										</div>
+									</div>
+									<p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row text-center"><h2>Usr info</h2></div>
+				<div class="row"> 					
+					<div class="col-md-8 ">
+						<div class="thumbnail totalBooks "> 									
+							<div class="bg-info" > 
+								<p>User info</p>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped progress-bar-success active" style='width:50%;'>
+										<b class="text-left">level-3</b>
+										<b class="text-right">50%</b>
+									</div>
+									<div class="progress-bar progress-bar-striped progress-bar-danger  active" style='width:30%;'>
+										<b class="text-left">30%</b>
+										<b class="text-right">level-2</b>
+									</div>
+									<div class="progress-bar progress-bar-striped progress-bar-info  active" style='width:20%;'>
+										<b class="text-left">20%</b>
+										<b class="text-right">level-1</b>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+					<div class="col-md-4 ">
+						<div class="thumbnail totalBooks "> 									
+							<div class="bg-info" > 
+								<p>User info</p>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped progress-bar-success text-right anianimation" style='width:70%;'>
+										<b class="text-left">Active</b>
+										<b class="text-right">70%</b>
+									</div>
+									<div class="progress-bar progress-bar-striped progress-bar-danger text-right anianimationM" style='width:30%;'>
+										<b class="text-left">30%</b>
+										<b class="text-right">Deactive</b>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+					<div class="row">	
+					</div>
+					<div class="row"> 	
+					</div>
+			</div>
+			<div id="addBook"  class="tab-pane fade">									
+						<h3 class="text-center text-info">Add book</h3>
+						<div class="col-md-12 ">
+							<div class="thumbnail totalBooks "> 									
+								<div class="bg-info" > 
+									<form action=""  method="POST"  enctype="multipart/form-data" >
+										<label for="">Picture</label>
+										<div class="input-group">
+											<input type="file" accept='image/*' id='image' name='file' class="form-control input-lg" title='Please add 20:9 ratio picture...' placeholder='20:9 ratio picture...' required />
+										</div>
+										<div class="form-group">
+											<label for="bookName">book name</label>	
+											<input type="name" id='bookName' name='bookName' class="form-control input-lg" placeholder='book name...' required />					
+										</div>
+										<div class="form-group">
+											<label for="bookCode">Code</label>	
+											<input type="number" id='bookCode' name='bookCode' class="form-control input-lg" placeholder="book's code..." required />					
+										</div>
+										<div class="form-group">
+											<label for="totalBook">Total book</label>	
+											<input type="number" id='totalBook' name='totalBook' class="form-control input-lg" placeholder='Total book...' required />					
+										</div>
+										<div class="form-group">
+											<label for="">Author Name</label>
+											<input type="name" name="author" class="form-control input-lg" placeholder="Author name........." required />
+										</div>
+										<div class="form-group">
+											<label for="">Publication</label>
+											<input type="name" name="publication" list="publication" class="form-control input-lg" placeholder="publication name........." required />
+											<datalist id="publication"> 
+												<option value="Technical Prokashoni">Technical Prokashoni</option>
+												<option value="Houqe Prokashoni">Houqe Prokashoni</option>
+											</datalist>
+										</div>
+										<div class="form-group">
+											<label for="">Price</label>
+											<input type="number" name="price" class="form-control input-lg" placeholder="Book's price........." required />
+										</div>
+										<div class="form-group">
+											<label for="">Date</label>
+											<input type="date" name="date" class="form-control input-lg" placeholder="date........." required />
+										</div>
+										<div class="text-center">
+												<input type="submit" name='upload' value='Add' class="btn-lg btn-success" style='' onclick='confirm("আপনি কি সঠিক তথ্য দিয়েছেন!  তাহলে ok প্রেস করুন।");' />
+											</div>
+									</form>
+								</div>
+							</div>
+						</div>
+			</div>
+			<div id="manageBook"  class="tab-pane fade">
+				<div class="container"> 
+					<div class="row text-center"> 
+						<div class="col-md-12">
+							<h3>Book's list</h3>
+							<h5>view all books</h5>
+							<table class="table table-hover table-striped table-bordered text-center">
+								<thead> 
+									<th>image</th>
+									<th>name</th>
+									<th>code</th>
+									<th>stored</th>
+									<th>total</th>
+									<th>action</th>
+								</thead>
+								<tbody> 
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/books/4.jpg" alt="" /></td>
+										<td>Web devolopment project</td>
+										<td>66652</td>
+										<td>50</td>
+										<td>80</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/books/4.jpg" alt="" /></td>
+										<td>Web devolopment project</td>
+										<td>66652</td>
+										<td>50</td>
+										<td>80</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/books/4.jpg" alt="" /></td>
+										<td>Web devolopment project</td>
+										<td>66652</td>
+										<td>50</td>
+										<td>80</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/books/4.jpg" alt="" /></td>
+										<td>Web devolopment project</td>
+										<td>66652</td>
+										<td>50</td>
+										<td>80</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div id='addStudent' class="tab-pane fade" style=""> 		
+				<div class="contain " style='width:80%; margin:auto;'>	
+					<div class="row">						
+						<h3 class="text-center text-info">Add Student</h3>
+						<div class="col-md-12 ">
+							<div class="thumbnail totalBooks "> 									
+								<div class="bg-info" > 
+									<form action="" method="POST">
+										<label for="">Picture</label>
+										<div class="input-group">
+											<input type="file" accept='image/*' id='image' name='file' class="form-control input-lg" title='Please add 20:9 ratio picture...' placeholder='20:9 ratio picture...' required />
+										</div>
+										<div class="form-group">
+											<label for="name">name</label>	
+											<input type="name" id='name' name='name' class="form-control input-lg" placeholder="Student's name..." required />					
+										</div>
+										<div class="form-group">
+											<label for="roll">Roll</label>	
+											<input type="number" id='roll' name='roll' class="form-control input-lg" placeholder="Student's roll..." required />					
+										</div>
+										<div class="form-group">
+											<label for="Technology">Technology</label>	
+											<input list="TechnologyList" type="text" id='Technology' name='Technology' class="form-control input-lg" placeholder='Total book...' required />	
+											<datalist id="TechnologyList">
+												<option value="Computer">Computer</option>
+												<option value="Electrical"></option>
+												<option value="Civil"></option>
+											</datalist>				
+										</div>
+										<div class="text-center">
+												<input type="submit" name='upload' value='Add' class="btn-lg btn-success" style='' onclick='confirm("আপনি কি সঠিক তথ্য দিয়েছেন!  তাহলে ok প্রেস করুন।");' />
+											</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="manageStudent"  class="tab-pane fade">				
+				<div class="container"> 
+					<div class="row text-center"> 
+						<div class="col-md-12">
+							<h3>Student's list</h3>
+							<h5>view all students</h5>
+							<table class="table table-hover table-striped table-bordered text-center">
+								<thead> 
+									<th>image</th>
+									<th>name</th>
+									<th>roll</th>
+									<th>action</th>
+								</thead>
+								<tbody> 
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/students/1.jpg" alt="" /></td>
+										<td>Zahid hasan</td>
+										<td>949551</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/students/2.jpg" alt="" /></td>
+										<td>Zahid hossain</td>
+										<td>949552</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/frontend/img/students/3.jpg" alt="" /></td>
+										<td>nahid hasan</td>
+										<td>949514</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" />
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="addUser"  class="tab-pane fade">
+				add user
+			</div>
+			<div id="manageUser"  class="tab-pane fade">							
+				<div class="container"> 
+					<div class="row text-center"> 
+						<div class="col-md-12">
+							<h3>User's list</h3>
+							<h5>view all users</h5>
+							<table class="table table-hover table-striped table-bordered text-center table-responsive">
+								<thead> 
+									<th>image</th>
+									<th>name</th>
+									<th>email</th>
+									<th>status</th>
+									<th>level</th>
+									<th>action</th>
+								</thead>
+								<tbody> 
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/backend/img/user/1.jpg" alt="" /></td>
+										<td>Zahid hasan</td>
+										<td>zahidhasan@yahoo.com</td>
+										<td>active</td>
+										<td>1</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr> 
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/backend/img/user/2.jpg" alt="" /></td>
+										<td>Zahid hossain</td>
+										<td>zahidhossainn@gmail.com</td>
+										<td>active</td>
+										<td>2</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr> 
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/backend/img/user/3.jpg" alt="" /></td>
+										<td>nahid hasan</td>
+										<td>nahidhasan@yahoo.com</td>
+										<td class="text-danger">unactive</td>
+										<td>2</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/backend/img/user/z.png" alt="" /></td>
+										<td>Jahid hasan</td>
+										<td>jahidhasan@yahoo.com</td>
+										<td>active</td>
+										<td>2</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" /> 
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+									<tr>
+										<td><img class="img-responsive" width="100" src="../assets/backend/img/user/z.png" alt="" /></td>
+										<td>kamal hasan</td>
+										<td>kamalhasan@yahoo.com</td>
+										<td>active</td>
+										<td>2</td>
+										<td>
+											<input class="btn btn-success btn-lg" type="button" value="view" /> 
+											<input class="btn btn-info btn-lg" type="button" value="edit" />
+											<input class="btn btn-danger btn-lg" type="button" value="delete" class="bnt btn-danger" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>
+<?php
+	}
+	else{
+		header("location:index.php");
+	}
+?>

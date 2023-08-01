@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.5
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Jan 03, 2020 at 09:56 PM
+- Server version: 10.1.38-MariaDB
+- PHP Version: 7.3.2
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="librarymanagementsystem" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="lmsbooks">
+                CREATE TABLE `lmsbooks` (
+                  `book_image` varchar(255) NOT NULL,
+                  `book_code` int(10) NOT NULL,
+                  `book_name` text NOT NULL,
+                  `book_stored` int(5) NOT NULL,
+                  `book_total` int(5) NOT NULL,
+                  `book_id` int(10) NOT NULL AUTO_INCREMENT,
+                  `Author` varchar(50) NOT NULL,
+                  `Publication` text NOT NULL,
+                  `Price` int(5) NOT NULL,
+                  `Date` date NOT NULL,
+                  PRIMARY KEY (`book_id`),
+                  KEY `book_id` (`book_id`),
+                  KEY `book_id_2` (`book_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="lmsgivenbook">
+                CREATE TABLE `lmsgivenbook` (
+                  `id` int(50) NOT NULL AUTO_INCREMENT,
+                  `stdntRoll` int(50) NOT NULL,
+                  `subjectCode` int(10) NOT NULL,
+                  `subjectName` varchar(50) NOT NULL,
+                  `getDate` date NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COMMENT='Given book database table';
+            </pma:table>
+            <pma:table name="lms_student">
+                CREATE TABLE `lms_student` (
+                  `student_id` int(100) NOT NULL AUTO_INCREMENT,
+                  `student_name` varchar(50) NOT NULL,
+                  `fathersName` varchar(50) NOT NULL,
+                  `Address` varchar(100) NOT NULL,
+                  `PhoneNumber` text NOT NULL,
+                  `student_roll` int(10) NOT NULL,
+                  `student_image` varchar(255) NOT NULL,
+                  `student_technology` text NOT NULL,
+                  PRIMARY KEY (`student_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="user">
+                CREATE TABLE `user` (
+                  `user_id` int(8) NOT NULL AUTO_INCREMENT,
+                  `user_image` varchar(255) NOT NULL,
+                  `user_name` varchar(50) NOT NULL,
+                  `user_email` varchar(80) NOT NULL,
+                  `user_password` varchar(50) NOT NULL,
+                  `user_level` tinyint(1) NOT NULL,
+                  `activation_status` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`user_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'librarymanagementsystem'
+    -->
+    <database name="librarymanagementsystem">
+        <!-- Table lmsbooks -->
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/bat color.png</column>
+            <column name="book_code">66652</column>
+            <column name="book_name">Pcb</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">15</column>
+            <column name="Author">etc</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-11-30</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/css.ico</column>
+            <column name="book_code">121212</column>
+            <column name="book_name">css</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">65</column>
+            <column name="Author">etc</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">250</column>
+            <column name="Date">2019-11-21</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/airplane.png</column>
+            <column name="book_code">2000</column>
+            <column name="book_name">Operating system</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">71</column>
+            <column name="Author">etc</column>
+            <column name="Publication">etc</column>
+            <column name="Price">500</column>
+            <column name="Date">2019-11-22</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/2.jpg</column>
+            <column name="book_code">123011</column>
+            <column name="book_name">programming </column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">85</column>
+            <column name="Author">etc</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-12-03</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/py.png</column>
+            <column name="book_code">6549</column>
+            <column name="book_name">python</column>
+            <column name="book_stored">10</column>
+            <column name="book_total">10</column>
+            <column name="book_id">86</column>
+            <column name="Author">etc</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-12-03</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">111111</column>
+            <column name="book_name">bd</column>
+            <column name="book_stored">100</column>
+            <column name="book_total">100</column>
+            <column name="book_id">87</column>
+            <column name="Author">bnmv</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-12-09</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65911</column>
+            <column name="book_name">Mathematicsâ€1</column>
+            <column name="book_stored">150</column>
+            <column name="book_total">150</column>
+            <column name="book_id">88</column>
+            <column name="Author">etc</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66611</column>
+            <column name="book_name">Computer application</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">89</column>
+            <column name="Author">j a n i na</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65912</column>
+            <column name="book_name">Physicsâ€1</column>
+            <column name="book_stored">100</column>
+            <column name="book_total">100</column>
+            <column name="book_id">90</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">150</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66712</column>
+            <column name="book_name">Electrical engineering fundamentals</column>
+            <column name="book_stored">150</column>
+            <column name="book_total">150</column>
+            <column name="book_id">91</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">220</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65712</column>
+            <column name="book_name">English</column>
+            <column name="book_stored">200</column>
+            <column name="book_total">200</column>
+            <column name="book_id">92</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">170</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65812</column>
+            <column name="book_name">Physical education &amp; life skills development</column>
+            <column name="book_stored">150</column>
+            <column name="book_total">150</column>
+            <column name="book_id">93</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">70</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65711</column>
+            <column name="book_name">Bangla</column>
+            <column name="book_stored">200</column>
+            <column name="book_total">200</column>
+            <column name="book_id">94</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">180</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66621</column>
+            <column name="book_name">Database Application</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">95</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">80</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65921</column>
+            <column name="book_name"> Mathematics-2</column>
+            <column name="book_stored">200</column>
+            <column name="book_total">200</column>
+            <column name="book_id">96</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66622</column>
+            <column name="book_name">IT support System-I</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">97</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65922</column>
+            <column name="book_name">Physics-2</column>
+            <column name="book_stored">100</column>
+            <column name="book_total">100</column>
+            <column name="book_id">98</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66623</column>
+            <column name="book_name">Graphics Design-I</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">50</column>
+            <column name="book_id">99</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">100</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65722</column>
+            <column name="book_name">Communicative English</column>
+            <column name="book_stored">150</column>
+            <column name="book_total">150</column>
+            <column name="book_id">100</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">prime</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66823</column>
+            <column name="book_name"> Analog Electronics</column>
+            <column name="book_stored">120</column>
+            <column name="book_total">120</column>
+            <column name="book_id">101</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">prime</column>
+            <column name="Price">180</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66631</column>
+            <column name="book_name">Programming Essentials</column>
+            <column name="book_stored">120</column>
+            <column name="book_total">120</column>
+            <column name="book_id">102</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">280</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65931</column>
+            <column name="book_name">Mathematicsâ€3</column>
+            <column name="book_stored">180</column>
+            <column name="book_total">180</column>
+            <column name="book_id">103</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">170</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66632</column>
+            <column name="book_name">Web Design</column>
+            <column name="book_stored">148</column>
+            <column name="book_total">150</column>
+            <column name="book_id">104</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65913</column>
+            <column name="book_name"> Chemistry</column>
+            <column name="book_stored">97</column>
+            <column name="book_total">100</column>
+            <column name="book_id">105</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">200</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66633</column>
+            <column name="book_name">Graphics designâ€II</column>
+            <column name="book_stored">78</column>
+            <column name="book_total">80</column>
+            <column name="book_id">106</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Technical Prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">65811</column>
+            <column name="book_name">Social Science</column>
+            <column name="book_stored">198</column>
+            <column name="book_total">200</column>
+            <column name="book_id">107</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">180</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/defaultBookImage.jpg</column>
+            <column name="book_code">66634</column>
+            <column name="book_name">IT support Systemâ€II</column>
+            <column name="book_stored">75</column>
+            <column name="book_total">80</column>
+            <column name="book_id">108</column>
+            <column name="Author">j a n i n a</column>
+            <column name="Publication">Houqe Prokashoni</column>
+            <column name="Price">220</column>
+            <column name="Date">2019-12-12</column>
+        </table>
+        <!-- Table lmsgivenbook -->
+        <table name="lmsgivenbook">
+            <column name="id">1</column>
+            <column name="stdntRoll">121212121</column>
+            <column name="subjectCode">66634</column>
+            <column name="subjectName">IT support Systemâ€II</column>
+            <column name="getDate">2019-12-13</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">2</column>
+            <column name="stdntRoll">845153</column>
+            <column name="subjectCode">66634</column>
+            <column name="subjectName">IT support Systemâ€II</column>
+            <column name="getDate">2019-12-13</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">3</column>
+            <column name="stdntRoll">845151</column>
+            <column name="subjectCode">66634</column>
+            <column name="subjectName">IT support Systemâ€II</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">4</column>
+            <column name="stdntRoll">845152</column>
+            <column name="subjectCode">66634</column>
+            <column name="subjectName">IT support Systemâ€II</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">5</column>
+            <column name="stdntRoll">845151</column>
+            <column name="subjectCode">65811</column>
+            <column name="subjectName">Social Science</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">6</column>
+            <column name="stdntRoll">845151</column>
+            <column name="subjectCode">66633</column>
+            <column name="subjectName">Graphics designâ€II</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">7</column>
+            <column name="stdntRoll">845151</column>
+            <column name="subjectCode">65913</column>
+            <column name="subjectName"> Chemistry</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">8</column>
+            <column name="stdntRoll">845152</column>
+            <column name="subjectCode">65811</column>
+            <column name="subjectName">Social Science</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">9</column>
+            <column name="stdntRoll">845152</column>
+            <column name="subjectCode">66633</column>
+            <column name="subjectName">Graphics designâ€II</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">10</column>
+            <column name="stdntRoll">845152</column>
+            <column name="subjectCode">65913</column>
+            <column name="subjectName"> Chemistry</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">11</column>
+            <column name="stdntRoll">845152</column>
+            <column name="subjectCode">66632</column>
+            <column name="subjectName">Web Design</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">12</column>
+            <column name="stdntRoll">321321</column>
+            <column name="subjectCode">66634</column>
+            <column name="subjectName">IT support Systemâ€II</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">13</column>
+            <column name="stdntRoll">321321</column>
+            <column name="subjectCode">66632</column>
+            <column name="subjectName">Web Design</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <table name="lmsgivenbook">
+            <column name="id">14</column>
+            <column name="stdntRoll">321321</column>
+            <column name="subjectCode">65913</column>
+            <column name="subjectName"> Chemistry</column>
+            <column name="getDate">2019-12-14</column>
+        </table>
+        <!-- Table lms_student -->
+        <table name="lms_student">
+            <column name="student_id">17</column>
+            <column name="student_name">nahid hasan</column>
+            <column name="fathersName">janina</column>
+            <column name="Address">komuna</column>
+            <column name="PhoneNumber">01 k o m u n a</column>
+            <column name="student_roll">321321</column>
+            <column name="student_image">assets/frontend/img/students/aa.jpg</column>
+            <column name="student_technology">Computer</column>
+        </table>
+        <table name="lms_student">
+            <column name="student_id">24</column>
+            <column name="student_name">zahid hasan</column>
+            <column name="fathersName">komu na</column>
+            <column name="Address">komuna</column>
+            <column name="PhoneNumber">01 k o m u n a</column>
+            <column name="student_roll">845151</column>
+            <column name="student_image">assets/frontend/img/students/2.jpg</column>
+            <column name="student_technology">Computer</column>
+        </table>
+        <table name="lms_student">
+            <column name="student_id">25</column>
+            <column name="student_name">à¦œà¦¾à¦¹à¦¿à¦¦ à¦¹à¦¾à¦¸à¦¾à¦¨</column>
+            <column name="fathersName">komu na</column>
+            <column name="Address">komuna</column>
+            <column name="PhoneNumber">01 k o m u n a</column>
+            <column name="student_roll">845153</column>
+            <column name="student_image">assets/frontend/img/students/1.jpg</column>
+            <column name="student_technology">Computer</column>
+        </table>
+        <table name="lms_student">
+            <column name="student_id">26</column>
+            <column name="student_name">Joynab akter</column>
+            <column name="fathersName">komu na</column>
+            <column name="Address">komu na</column>
+            <column name="PhoneNumber">0 1   k o m u n a</column>
+            <column name="student_roll">845152</column>
+            <column name="student_image">assets/frontend/img/students/j.jpg</column>
+            <column name="student_technology">Computer</column>
+        </table>
+        <table name="lms_student">
+            <column name="student_id">27</column>
+            <column name="student_name">à¦œà§Ÿà¦¨à¦¾à¦¬ à¦–à¦¾à¦¤à§à¦¨</column>
+            <column name="fathersName">komu na</column>
+            <column name="Address">komuna</column>
+            <column name="PhoneNumber">0 1   k o m u n a</column>
+            <column name="student_roll">121212121</column>
+            <column name="student_image">assets/frontend/img/students/default.jpg</column>
+            <column name="student_technology">Computer</column>
+        </table>
+        <table name="lms_student">
+            <column name="student_id">28</column>
+            <column name="student_name">à¦¨à¦¾à¦¹à¦¿à¦¦ à¦¹à¦¾à¦¸à¦¾à¦¨</column>
+            <column name="fathersName">komu na</column>
+            <column name="Address">komuna</column>
+            <column name="PhoneNumber">0 1   k o m u n a</column>
+            <column name="student_roll">321322</column>
+            <column name="student_image">assets/frontend/img/students/default.jpg</column>
+            <column name="student_technology">Civil</column>
+        </table>
+        <table name="lms_student">
+            <column name="student_id">29</column>
+            <column name="student_name">à¦œà¦¾à¦¹à¦¿à¦¦ à¦¹à¦¾à¦¸à¦¾à¦¨</column>
+            <column name="fathersName">komu na</column>
+            <column name="Address">komuna</column>
+            <column name="PhoneNumber">0 1   k o m u n a</column>
+            <column name="student_roll">945151</column>
+            <column name="student_image">assets/frontend/img/students/default.jpg</column>
+            <column name="student_technology">Computer</column>
+        </table>
+        <!-- Table user -->
+        <table name="user">
+            <column name="user_id">3</column>
+            <column name="user_image">assets/backend/img/user/3.jpg</column>
+            <column name="user_name">nahid</column>
+            <column name="user_email">nahid@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">3</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">6</column>
+            <column name="user_image">assets/backend/img/user/2.jpg</column>
+            <column name="user_name">Zahid Hasan</column>
+            <column name="user_email">zahidhasan@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">1</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">7</column>
+            <column name="user_image">assets/backend/img/user/1.jpg</column>
+            <column name="user_name">Zahid Hasan</column>
+            <column name="user_email">zahid@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">1</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">8</column>
+            <column name="user_image">assets/backend/img/user/j.jpg</column>
+            <column name="user_name">joynab akter</column>
+            <column name="user_email">joynab@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">3</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">29</column>
+            <column name="user_image">assets/backend/img/user/default.jpg</column>
+            <column name="user_name">nahid hasan</column>
+            <column name="user_email">nahid@gmail.com</column>
+            <column name="user_password">a</column>
+            <column name="user_level">0</column>
+            <column name="activation_status">0</column>
+        </table>
+        <table name="user">
+            <column name="user_id">30</column>
+            <column name="user_image">assets/backend/img/user/y.jpg</column>
+            <column name="user_name">zahid hasan</column>
+            <column name="user_email">zahid@yahoo.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">2</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">39</column>
+            <column name="user_image">assets/backend/img/user/ibit-logo-new-red-new-full-copy----------gif-version.gif</column>
+            <column name="user_name">ibit</column>
+            <column name="user_email">ibit@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">3</column>
+            <column name="activation_status">0</column>
+        </table>
+    </database>
+</pma_xml_export>

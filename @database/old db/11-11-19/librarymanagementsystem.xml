@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.5
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Nov 10, 2019 at 08:45 PM
+- Server version: 10.1.38-MariaDB
+- PHP Version: 7.3.2
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="librarymanagementsystem" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="lmsbooks">
+                CREATE TABLE `lmsbooks` (
+                  `book_image` varchar(255) NOT NULL,
+                  `book_code` int(10) NOT NULL,
+                  `book_name` text NOT NULL,
+                  `book_stored` int(5) NOT NULL,
+                  `book_total` int(5) NOT NULL,
+                  `book_id` int(10) NOT NULL AUTO_INCREMENT,
+                  `Author` varchar(50) NOT NULL,
+                  `Publication` text NOT NULL,
+                  `Price` int(5) NOT NULL,
+                  `Date` date NOT NULL,
+                  PRIMARY KEY (`book_id`),
+                  KEY `book_id` (`book_id`),
+                  KEY `book_id_2` (`book_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="lmsbookshistory">
+                CREATE TABLE `lmsbookshistory` (
+                  `historyID` int(200) NOT NULL AUTO_INCREMENT,
+                  `historyBooksName` varchar(100) NOT NULL,
+                  `historyStudentName` varchar(50) NOT NULL,
+                  `historyBooksCode` int(10) NOT NULL,
+                  `historyStudentRoll` int(10) NOT NULL,
+                  `historyDate` date NOT NULL,
+                  `historyStatus` text NOT NULL,
+                  PRIMARY KEY (`historyID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="lms_student">
+                CREATE TABLE `lms_student` (
+                  `student_id` int(100) NOT NULL AUTO_INCREMENT,
+                  `student_name` varchar(50) NOT NULL,
+                  `student_roll` int(10) NOT NULL,
+                  `student_image` varchar(255) NOT NULL,
+                  PRIMARY KEY (`student_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="user">
+                CREATE TABLE `user` (
+                  `user_id` int(8) NOT NULL AUTO_INCREMENT,
+                  `user_image` varchar(255) NOT NULL,
+                  `user_name` varchar(50) NOT NULL,
+                  `user_email` varchar(80) NOT NULL,
+                  `user_password` varchar(50) NOT NULL,
+                  `user_level` tinyint(1) NOT NULL,
+                  `activation_status` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`user_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'librarymanagementsystem'
+    -->
+    <database name="librarymanagementsystem">
+        <!-- Table lmsbooks -->
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/4.jpg</column>
+            <column name="book_code">66652</column>
+            <column name="book_name">Surveillance Sycurity System</column>
+            <column name="book_stored">40</column>
+            <column name="book_total">100</column>
+            <column name="book_id">13</column>
+            <column name="Author"></column>
+            <column name="Publication"></column>
+            <column name="Price">0</column>
+            <column name="Date">0000-00-00</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/2.jpg</column>
+            <column name="book_code">66652</column>
+            <column name="book_name">Operating System</column>
+            <column name="book_stored">30</column>
+            <column name="book_total">40</column>
+            <column name="book_id">14</column>
+            <column name="Author"></column>
+            <column name="Publication"></column>
+            <column name="Price">0</column>
+            <column name="Date">0000-00-00</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/3.jpg</column>
+            <column name="book_code">66652</column>
+            <column name="book_name">Pcb</column>
+            <column name="book_stored">50</column>
+            <column name="book_total">80</column>
+            <column name="book_id">15</column>
+            <column name="Author"></column>
+            <column name="Publication"></column>
+            <column name="Price">0</column>
+            <column name="Date">0000-00-00</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/4.jpg</column>
+            <column name="book_code">66652</column>
+            <column name="book_name">Programming in java</column>
+            <column name="book_stored">30</column>
+            <column name="book_total">50</column>
+            <column name="book_id">16</column>
+            <column name="Author"></column>
+            <column name="Publication"></column>
+            <column name="Price">0</column>
+            <column name="Date">0000-00-00</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/Animated_Flag_of_Bangladesh.gif</column>
+            <column name="book_code">1</column>
+            <column name="book_name">bd</column>
+            <column name="book_stored">0</column>
+            <column name="book_total">1</column>
+            <column name="book_id">56</column>
+            <column name="Author"></column>
+            <column name="Publication"></column>
+            <column name="Price">0</column>
+            <column name="Date">0000-00-00</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/css.ico</column>
+            <column name="book_code">1234</column>
+            <column name="book_name">css</column>
+            <column name="book_stored">0</column>
+            <column name="book_total">100</column>
+            <column name="book_id">57</column>
+            <column name="Author"></column>
+            <column name="Publication"></column>
+            <column name="Price">0</column>
+            <column name="Date">0000-00-00</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/py.png</column>
+            <column name="book_code">66631</column>
+            <column name="book_name">programming assential</column>
+            <column name="book_stored">0</column>
+            <column name="book_total">50</column>
+            <column name="book_id">59</column>
+            <column name="Author">shahadat</column>
+            <column name="Publication">technical prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-11-24</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/py.png</column>
+            <column name="book_code">66631</column>
+            <column name="book_name">programming assential</column>
+            <column name="book_stored">0</column>
+            <column name="book_total">50</column>
+            <column name="book_id">60</column>
+            <column name="Author">shahadat</column>
+            <column name="Publication">technical prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-11-24</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/py.png</column>
+            <column name="book_code">66631</column>
+            <column name="book_name">programming assential</column>
+            <column name="book_stored">0</column>
+            <column name="book_total">50</column>
+            <column name="book_id">61</column>
+            <column name="Author">shahadat</column>
+            <column name="Publication">technical prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-11-24</column>
+        </table>
+        <table name="lmsbooks">
+            <column name="book_image">assets/frontend/img/books/py.png</column>
+            <column name="book_code">66631</column>
+            <column name="book_name">programming assential</column>
+            <column name="book_stored">0</column>
+            <column name="book_total">50</column>
+            <column name="book_id">62</column>
+            <column name="Author">shahadat</column>
+            <column name="Publication">technical prokashoni</column>
+            <column name="Price">120</column>
+            <column name="Date">2019-11-24</column>
+        </table>
+        <!-- Table lmsbookshistory -->
+        <table name="lmsbookshistory">
+            <column name="historyID">1</column>
+            <column name="historyBooksName">Programming in java</column>
+            <column name="historyStudentName">Zahid hasan</column>
+            <column name="historyBooksCode">66652</column>
+            <column name="historyStudentRoll">949551</column>
+            <column name="historyDate">2019-10-03</column>
+            <column name="historyStatus">get</column>
+        </table>
+        <table name="lmsbookshistory">
+            <column name="historyID">2</column>
+            <column name="historyBooksName">Programming in java</column>
+            <column name="historyStudentName">Zahid hasan</column>
+            <column name="historyBooksCode">66652</column>
+            <column name="historyStudentRoll">949551</column>
+            <column name="historyDate">2019-11-03</column>
+            <column name="historyStatus">return</column>
+        </table>
+        <!-- Table lms_student -->
+        <table name="lms_student">
+            <column name="student_id">1</column>
+            <column name="student_name">Zahid hasan</column>
+            <column name="student_roll">949551</column>
+            <column name="student_image">assets/frontend/img/students/1.jpg</column>
+        </table>
+        <!-- Table user -->
+        <table name="user">
+            <column name="user_id">1</column>
+            <column name="user_image">assets/backend/img/user/1.jpg</column>
+            <column name="user_name">Zahid Hasan</column>
+            <column name="user_email">zahidhasan@yahoo.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">1</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">2</column>
+            <column name="user_image">assets/backend/img/user/2.jpg</column>
+            <column name="user_name">Zahid Hasan</column>
+            <column name="user_email">zahidhasan@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">1</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">3</column>
+            <column name="user_image">assets/backend/img/user/3.jpg</column>
+            <column name="user_name">nahid</column>
+            <column name="user_email">Nahid@gmail.com</column>
+            <column name="user_password">nahid</column>
+            <column name="user_level">0</column>
+            <column name="activation_status">0</column>
+        </table>
+        <table name="user">
+            <column name="user_id">4</column>
+            <column name="user_image">assets/backend/img/user/z.png</column>
+            <column name="user_name">Zahid Hasan</column>
+            <column name="user_email">zahid@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">1</column>
+            <column name="activation_status">1</column>
+        </table>
+        <table name="user">
+            <column name="user_id">5</column>
+            <column name="user_image">assets/backend/img/user/photo7.jpg</column>
+            <column name="user_name">nahid hasan</column>
+            <column name="user_email">Nahid@gmail.com</column>
+            <column name="user_password">admin</column>
+            <column name="user_level">0</column>
+            <column name="activation_status">0</column>
+        </table>
+    </database>
+</pma_xml_export>
